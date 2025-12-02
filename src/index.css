@@ -383,8 +383,8 @@ button {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
     margin-bottom: 50px;
 }
 
@@ -1048,6 +1048,18 @@ button {
     }
 }
 
+@media (max-width: 1400px) {
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
@@ -1086,7 +1098,10 @@ button {
         font-size: 2rem;
     }
 
-    .gallery-grid,
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
     .services-grid,
     .blog-grid {
         grid-template-columns: 1fr;
@@ -1164,7 +1179,8 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1173,11 +1189,96 @@ button {
     animation: fadeIn 0.3s ease;
 }
 
-.lightbox img {
-    max-width: 90%;
-    max-height: 90%;
+.lightbox-content {
+    position: relative;
+    max-width: 85%;
+    max-height: 85%;
+    cursor: default;
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.3s ease;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 75vh;
     border-radius: 10px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    display: block;
+    margin: 0 auto;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--gradient);
+    border: 3px solid white;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.3rem;
+    z-index: 3001;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox-close:hover {
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 8px 25px rgba(212, 165, 116, 0.6);
+}
+
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--gradient);
+    border: 3px solid white;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.4rem;
+    z-index: 3001;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox-prev {
+    left: 10px;
+}
+
+.lightbox-next {
+    right: 10px;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    transform: translateY(-50%) scale(1.15);
+    box-shadow: 0 8px 25px rgba(212, 165, 116, 0.6);
+}
+
+.lightbox-counter {
+    text-align: center;
+    margin-top: 15px;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 8px 20px;
+    background: var(--accent-color);
+    border-radius: 20px;
+    display: inline-block;
 }
 
 @keyframes fadeIn {
@@ -1186,5 +1287,52 @@ button {
     }
     to {
         opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Responsive lightbox */
+@media (max-width: 768px) {
+    .lightbox-content {
+        max-width: 95%;
+        max-height: 90%;
+        padding: 15px;
+    }
+    
+    .lightbox-prev,
+    .lightbox-next {
+        width: 42px;
+        height: 42px;
+        font-size: 1.2rem;
+    }
+    
+    .lightbox-prev {
+        left: 5px;
+    }
+    
+    .lightbox-next {
+        right: 5px;
+    }
+    
+    .lightbox-close {
+        width: 42px;
+        height: 42px;
+        font-size: 1.2rem;
+        top: 5px;
+        right: 5px;
+    }
+    
+    .lightbox-content img {
+        max-height: 65vh;
     }
 }

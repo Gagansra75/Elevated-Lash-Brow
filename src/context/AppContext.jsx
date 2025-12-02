@@ -19,8 +19,28 @@ export const AppProvider = ({ children }) => {
 
   // Load sample data on mount
   useEffect(() => {
-    loadSampleData();
-    loadFromLocalStorage();
+    const savedGallery = localStorage.getItem('lashStoreGallery');
+    
+    // Only load from localStorage if it exists, otherwise load your new images
+    if (savedGallery) {
+      const parsed = JSON.parse(savedGallery);
+      // Check if it's the old sample data (starts with https)
+      if (parsed.length > 0 && parsed[0].url.startsWith('https')) {
+        // Clear old sample data and load new images
+        localStorage.removeItem('lashStoreGallery');
+        loadSampleData();
+      } else {
+        setGallery(parsed);
+      }
+    } else {
+      loadSampleData();
+    }
+    
+    // Load other data
+    const savedBlog = localStorage.getItem('lashStoreBlog');
+    const savedBookings = localStorage.getItem('lashStoreBookings');
+    if (savedBlog) setBlogPosts(JSON.parse(savedBlog));
+    if (savedBookings) setBookings(JSON.parse(savedBookings));
   }, []);
 
   // Auto-save to localStorage
@@ -33,44 +53,23 @@ export const AppProvider = ({ children }) => {
   }, [gallery, blogPosts, bookings]);
 
   const loadSampleData = () => {
-    setGallery([
-      {
-        id: 1,
-        url: 'https://images.unsplash.com/photo-1583001308122-6fa8ff0dd8e9?w=600',
-        category: 'lashes',
-        date: '2025-11-28'
-      },
-      {
-        id: 2,
-        url: 'https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=600',
-        category: 'lashes',
-        date: '2025-11-27'
-      },
-      {
-        id: 3,
-        url: 'https://images.unsplash.com/photo-1612832021-e1e89fd57f4c?w=600',
-        category: 'brows',
-        date: '2025-11-26'
-      },
-      {
-        id: 4,
-        url: 'https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=600',
-        category: 'lashes',
-        date: '2025-11-25'
-      },
-      {
-        id: 5,
-        url: 'https://images.unsplash.com/photo-1515688594390-b649af70d282?w=600',
-        category: 'threading',
-        date: '2025-11-24'
-      },
-      {
-        id: 6,
-        url: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600',
-        category: 'brows',
-        date: '2025-11-23'
-      }
-    ]);
+    // Load your actual lash images from public/gallery folder
+    const lashImages = [
+      'IMG_1614.JPG', 'IMG_1617.JPG', 'IMG_1618.JPG', 'IMG_1620.JPG',
+      'IMG_1622.JPG', 'IMG_1623.JPG', 'IMG_1630.JPG', 'IMG_1631.JPG',
+      'IMG_1637.JPG', 'IMG_1638.JPG', 'IMG_1639.JPG', 'IMG_1643.JPG',
+      'IMG_1645.JPG', 'IMG_1647.JPG', 'IMG_1648.JPG', 'IMG_1650.JPG',
+      'IMG_1652.JPG', 'IMG_1653.JPG'
+    ];
+
+    const galleryData = lashImages.map((image, index) => ({
+      id: index + 1,
+      url: `/gallery/${image}`,
+      category: 'lashes',
+      date: new Date(2025, 10, 28 - index).toLocaleDateString()
+    }));
+
+    setGallery(galleryData);
 
     setBlogPosts([
       {
@@ -109,15 +108,7 @@ export const AppProvider = ({ children }) => {
     localStorage.setItem('lashStoreBookings', JSON.stringify(bookings));
   };
 
-  const loadFromLocalStorage = () => {
-    const savedGallery = localStorage.getItem('lashStoreGallery');
-    const savedBlog = localStorage.getItem('lashStoreBlog');
-    const savedBookings = localStorage.getItem('lashStoreBookings');
 
-    if (savedGallery) setGallery(JSON.parse(savedGallery));
-    if (savedBlog) setBlogPosts(JSON.parse(savedBlog));
-    if (savedBookings) setBookings(JSON.parse(savedBookings));
-  };
 
   const showToast = (message) => {
     setToast({ show: true, message });

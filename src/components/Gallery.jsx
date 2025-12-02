@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
-import { FaSearchPlus } from 'react-icons/fa';
+import { FaSearchPlus, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const Gallery = () => {
   const { gallery, currentFilter, setCurrentFilter, addGalleryImages } = useApp();
   const [selectedCategory, setSelectedCategory] = useState('lashes');
   const [lightboxImage, setLightboxImage] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const filters = [
     { id: 'all', label: 'All' },
@@ -34,6 +35,41 @@ const Gallery = () => {
     ? gallery 
     : gallery.filter(item => item.category === currentFilter);
 
+  // Handle escape key to close lightbox
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && lightboxImage) {
+        setLightboxImage(null);
+      }
+    };
+    
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [lightboxImage]);
+
+  const openLightbox = (imageUrl, index) => {
+    setLightboxImage(imageUrl);
+    setCurrentImageIndex(index);
+  };
+
+  const closeLightbox = () => {
+    setLightboxImage(null);
+  };
+
+  const goToNextImage = (e) => {
+    e.stopPropagation();
+    const nextIndex = (currentImageIndex + 1) % filteredGallery.length;
+    setCurrentImageIndex(nextIndex);
+    setLightboxImage(filteredGallery[nextIndex].url);
+  };
+
+  const goToPreviousImage = (e) => {
+    e.stopPropagation();
+    const prevIndex = (currentImageIndex - 1 + filteredGallery.length) % filteredGallery.length;
+    setCurrentImageIndex(prevIndex);
+    setLightboxImage(filteredGallery[prevIndex].url);
+  };
+
   return (
     <section id="gallery" className="section gallery-section">
       <div className="container">
@@ -60,11 +96,11 @@ const Gallery = () => {
               No images yet. Upload some beautiful work!
             </p>
           ) : (
-            filteredGallery.map(item => (
+            filteredGallery.map((item, index) => (
               <div
                 key={item.id}
                 className="gallery-item fade-in"
-                onClick={() => setLightboxImage(item.url)}
+                onClick={() => openLightbox(item.url, index)}
               >
                 <img src={item.url} alt="Gallery" />
                 <div className="gallery-overlay">
@@ -99,8 +135,28 @@ const Gallery = () => {
       </div>
 
       {lightboxImage && (
-        <div className="lightbox" onClick={() => setLightboxImage(null)}>
-          <img src={lightboxImage} alt="Lightbox" />
+        <div className="lightbox" onClick={closeLightbox}>
+          <button className="lightbox-close" onClick={closeLightbox}>
+            <FaTimes />
+          </button>
+          
+          {filteredGallery.length > 1 && (
+            <>
+              <button className="lightbox-prev" onClick={goToPreviousImage}>
+                <FaChevronLeft />
+              </button>
+              <button className="lightbox-next" onClick={goToNextImage}>
+                <FaChevronRight />
+              </button>
+            </>
+          )}
+          
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <img src={lightboxImage} alt="Lightbox" />
+            <div className="lightbox-counter">
+              {currentImageIndex + 1} / {filteredGallery.length}
+            </div>
+          </div>
         </div>
       )}
     </section>
