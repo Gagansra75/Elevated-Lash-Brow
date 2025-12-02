@@ -6,42 +6,42 @@ const Services = () => {
       icon: <FaEye />,
       title: 'Classic Lash Extensions',
       description: 'Natural-looking lashes that enhance your eyes beautifully',
-      price: 'From $80',
+      price: 'From $120',
       link: '#booking'
     },
     {
       icon: <FaStar />,
       title: 'Volume Lash Extensions',
       description: 'Fuller, dramatic lashes with multiple extensions per natural lash',
-      price: 'From $120',
+      price: 'From $175',
       link: '#booking'
     },
     {
       icon: <FaMagic />,
       title: 'Hybrid Lash Extensions',
       description: 'Perfect blend of classic and volume techniques',
-      price: 'From $100',
+      price: 'From $140',
       link: '#booking'
     },
     {
       icon: <FaSpa />,
       title: 'Eyebrow Threading',
       description: 'Precise hair removal for perfectly shaped brows',
-      price: 'From $15',
+      price: 'From $20',
       link: '#booking'
     },
     {
       icon: <FaPaintBrush />,
       title: 'Brow Tinting & Shaping',
       description: 'Define and enhance your brows with professional tinting',
-      price: 'From $25',
+      price: 'From $50',
       link: '#booking'
     },
     {
       icon: <FaRedo />,
       title: 'Lash Fills & Touch-ups',
       description: 'Maintain your beautiful lashes with regular fills',
-      price: 'From $60',
+      price: 'From $80',
       link: '#booking'
     }
   ];

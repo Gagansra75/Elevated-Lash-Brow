@@ -40,7 +40,7 @@ const Footer = () => {
             <h4>Contact</h4>
             <p><FaPhone /> (555) 123-4567</p>
             <p><FaEnvelope /> info@elevatedlashandbrow.com</p>
-            <p><FaMapMarkerAlt /> 123 Beauty Street, NY 10001</p>
+            <p><FaMapMarkerAlt /> 123 Beauty Street, Seattle, WA 98101</p>
           </div>
           <div className="footer-section">
             <h4>Newsletter</h4>

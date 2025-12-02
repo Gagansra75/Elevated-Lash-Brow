@@ -19,13 +19,12 @@ const Booking = () => {
   });
 
   const services = [
-    { value: 'classic-lashes', label: 'Classic Lash Extensions - $80' },
-    { value: 'volume-lashes', label: 'Volume Lash Extensions - $120' },
-    { value: 'hybrid-lashes', label: 'Hybrid Lash Extensions - $100' },
-    { value: 'lash-fill', label: 'Lash Fill - $60' },
-    { value: 'eyebrow-threading', label: 'Eyebrow Threading - $15' },
-    { value: 'brow-tinting', label: 'Brow Tinting & Shaping - $25' },
-    { value: 'full-face-threading', label: 'Full Face Threading - $35' }
+    { value: 'classic-lashes', label: 'Classic Lash Extensions - From $80' },
+    { value: 'volume-lashes', label: 'Volume Lash Extensions - From $120' },
+    { value: 'hybrid-lashes', label: 'Hybrid Lash Extensions - From $100' },
+    { value: 'lash-fill', label: 'Lash Fills & Touch-ups - From $60' },
+    { value: 'eyebrow-threading', label: 'Eyebrow Threading - From $15' },
+    { value: 'brow-tinting', label: 'Brow Tinting & Shaping - From $25' }
   ];
 
   const timeSlots = [
@@ -227,7 +226,7 @@ const Booking = () => {
             <div className="info-card">
               <FaMapMarkerAlt />
               <h4>Visit Us</h4>
-              <p>123 Beauty Street<br />New York, NY 10001</p>
+              <p>123 Beauty Street<br />Seattle, WA 98101</p>
             </div>
           </div>
         </div>

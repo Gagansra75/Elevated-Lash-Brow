@@ -76,10 +76,20 @@ export const AppProvider = ({ children }) => {
         id: 1,
         title: 'The Ultimate Guide to Lash Extensions',
         author: 'Sarah Johnson',
-        image: 'https://images.unsplash.com/photo-1583001308122-6fa8ff0dd8e9?w=800',
+        image: '/gallery/IMG_1622.JPG',
         excerpt: 'Everything you need to know about choosing the perfect lash extensions for your eye shape and lifestyle.',
-        content: `Lash extensions have become increasingly popular as a beauty enhancement that saves time and creates stunning results...`,
-        date: 'November 28, 2025'
+        content: `Lash extensions have become increasingly popular as a beauty enhancement that saves time and creates stunning results. Whether you're looking for a natural look or dramatic volume, understanding the different types of extensions is key to achieving your desired results.
+
+Classic lash extensions offer a natural enhancement, with one extension applied to each natural lash. They're perfect for those who want subtle definition and length without too much drama.
+
+Volume lashes create a fuller, more glamorous look by applying multiple ultra-fine extensions to each natural lash. This technique is ideal for those with sparse lashes or anyone wanting a more dramatic effect.
+
+Hybrid lashes combine both classic and volume techniques, offering the best of both worlds with texture and dimension.
+
+Remember, proper aftercare is essential for maintaining your lash extensions. Avoid oil-based products, be gentle when cleansing, and brush your lashes daily to keep them looking their best!`,
+        date: 'November 28, 2025',
+        category: 'Tutorials',
+        readTime: '7'
       },
       {
         id: 2,
@@ -87,8 +97,16 @@ export const AppProvider = ({ children }) => {
         author: 'Maria Garcia',
         image: 'https://images.unsplash.com/photo-1515688594390-b649af70d282?w=800',
         excerpt: 'Discover the differences between threading and waxing, and find out which method is best for achieving perfect brows.',
-        content: `When it comes to shaping your eyebrows, two popular methods stand out...`,
-        date: 'November 25, 2025'
+        content: `When it comes to shaping your eyebrows, two popular methods stand out: threading and waxing. Both have their unique advantages, and the best choice depends on your skin type, pain tolerance, and desired results.
+
+Threading is an ancient hair removal technique that uses twisted cotton thread to remove hair from the follicle. It's incredibly precise, making it ideal for creating clean, defined brow shapes. Threading is also gentle on sensitive skin and doesn't use any chemicals or heat.
+
+Waxing, on the other hand, removes hair in larger sections, making it faster for covering more area. It can be more efficient for shaping and cleaning up larger areas around the brows. However, it can be harsher on sensitive skin.
+
+For most clients with sensitive skin or those who want precise shaping, we recommend threading. It's gentler, more accurate, and creates beautiful, crisp lines. Plus, the results last just as long as waxing – typically 3-4 weeks!`,
+        date: 'November 25, 2025',
+        category: 'Tips & Tricks',
+        readTime: '5'
       },
       {
         id: 3,
@@ -96,8 +114,24 @@ export const AppProvider = ({ children }) => {
         author: 'Emily Chen',
         image: 'https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=800',
         excerpt: 'Learn professional tips for maintaining healthy natural lashes and extending the life of your lash extensions.',
-        content: `Whether you have natural lashes or extensions, proper care is essential...`,
-        date: 'November 22, 2025'
+        content: `Whether you have natural lashes or extensions, proper care is essential for maintaining their health and beauty. Here are our top expert tips for lash care that will keep your eyes looking gorgeous.
+
+First and foremost, be gentle! Your lashes are delicate, so avoid rubbing your eyes and be careful when removing makeup. Use a gentle, oil-free makeup remover and pat – don't rub.
+
+If you have lash extensions, avoid oil-based products completely. Oil breaks down the adhesive, causing your extensions to fall out prematurely. Stick to oil-free cleansers, makeup, and skincare products.
+
+Brush your lashes daily with a clean spoolie brush. This keeps them looking neat and prevents tangling. For extensions, brush them gently from mid-length to tips.
+
+Stay away from steam and excessive heat for the first 24-48 hours after getting extensions. This allows the adhesive to fully cure.
+
+Sleep on your back when possible to avoid crushing your lashes against the pillow. If you're a side sleeper, consider using a silk pillowcase to reduce friction.
+
+Schedule regular fills every 2-3 weeks to maintain your extensions. This keeps them looking full and beautiful while protecting your natural lashes.
+
+Finally, give your natural lashes a break every few months. Taking a short break from extensions allows your natural lashes to rest and rejuvenate.`,
+        date: 'November 22, 2025',
+        category: 'Tips & Tricks',
+        readTime: '6'
       }
     ]);
   };
