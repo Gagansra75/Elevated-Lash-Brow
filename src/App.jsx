@@ -9,11 +9,17 @@ import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Toast from './components/Toast';
+import WelcomePopup from './components/WelcomePopup';
+import ChatWidget from './components/ChatWidget';
+import ScrollProgress from './components/ScrollProgress';
+import CursorFollower from './components/CursorFollower';
 
 function App() {
   return (
     <Router>
       <div className="App">
+        <ScrollProgress />
+        <CursorFollower />
         <Navbar />
         <Hero />
         <Gallery />
@@ -24,6 +30,8 @@ function App() {
         <Contact />
         <Footer />
         <Toast />
+        <WelcomePopup />
+        <ChatWidget />
       </div>
     </Router>
   );
